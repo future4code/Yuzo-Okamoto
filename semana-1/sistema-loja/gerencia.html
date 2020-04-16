@@ -9,56 +9,53 @@
     <meta name="description" content="Sistema Interno TekLog">
     <meta name="keywords" content="sistema de informática, loja virtual, sistema e-commerce, e-commerce, sistema de produtos, sistema online">
     <meta name="author" content="Yuzo Santana Okamoto">
+    <link rel="stylesheet" href="./css/estilos-gerais.css">
 </head>
 <body>
     
-    <header>
-        <h1>TekLog</h1>
-        <h3>Sistema Interno de Controle</h3>
-    </header>
-
     <nav>
-        <ul>
-            <li><a href="./index.html">Página Inicial</a></li>
-            <li><a href="./catalog.html">Controle de Estoque</a></li>
-            <li><a href="./gerencia.html">Adicionar Produtos</a></li>
-            <li><a href="./staff.html">Funcionários</a></li>
+        <div class="nav-logo">
+            <a href="#">TEKLOG</a>
+        </div>
+        <ul class="nav-list">
+            <li class="nav-link"><a href="./index.html">Página Inicial</a></li>
+            <li class="nav-link"><a href="./catalog.html">Controle de Estoque</a></li>
+            <li class="nav-link"><a href="./gerencia.html">Adicionar Produtos</a></li>
+            <li class="nav-link"><a href="./staff.html">Funcionários</a></li>
         </ul>
     </nav>
 
-    <br><br>
     <main>
-        <section>
+        <article>
             <form action="get">
                 <label for="produto-nome"><p>Nome do produto</p></label>
                 <input type="text" name="nome-produto" id="nome-produto">
             </form>
-            <br>
+           
             <form action="get">
                 <label for="produto-imagem-url"><p>URL da imagem</p></label>
                 <input type="text" name="produto-imagem-url" id="produto-imagem-url">
             </form>
-            <br>
+           
             <form action="get">
                 <label for="produto-info"><p>Descrição</p></label>
                 <input type="text" name="produto-info" id="produto-info">
             </form>
-            <br>
+            
             <form action="get">
                 <label for="produto-preco"><p>Preço por unidade</p></label>
                 <input type="text" name="produto-preco" id="produto-preco">
             </form>
-            <br>
+            
             <form action="get">
                 <label for="produto-quantidade"><p>Quantidade disponível</p></label>
                 <input type="text" name="produto-quantidade" id="produto-quantidade">
             </form>
-            <br>
+
             <button type="submit">Enviar</button>
-        </section>
+        </article>
     </main>
 
-    <br><br>
     <footer>
         <p><em>Desenvolvido por Yuzo Santana Okamoto - @ </em><span><a href="https://github.com/yuzokamoto" target="_blank">GitHub</a></span></p>
     </footer>

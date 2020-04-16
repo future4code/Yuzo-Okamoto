@@ -1,0 +1,17 @@
+
+h1 {
+    font-size: 30px;
+}
+
+h6 {
+    font-size: 25px;
+    margin-left: 50px;
+}
+
+article, header, section {
+    padding: 10px;
+}
+
+section {
+    margin-left: 50px;
+}
