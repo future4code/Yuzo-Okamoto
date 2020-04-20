@@ -153,6 +153,11 @@ td button:hover {
     height: 100px;
 }
 
+.container-do-search input {
+    border: none;
+    border-bottom: 1px solid black;
+}
+
 .icone {
     width: 15px;
 }
