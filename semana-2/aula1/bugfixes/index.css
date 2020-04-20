@@ -32,10 +32,29 @@ h3 {
 input {
     height: 20px;
     width: 500px;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+input:focus {
+    outline: none !important;
+}
+
+button {
+    font-weight: bold !important;
 }
 
 button:focus {
-    color: white;
+    text-decoration: underline;
+    outline: none !important;
+}
+
+button:active {
+    border: none;
+}
+
+button:hover {
+    background: none !important;
 }
 
 img {
@@ -151,11 +170,6 @@ td button:hover {
 .container-do-search {
     margin-top: 20px;
     height: 100px;
-}
-
-.container-do-search input {
-    border: none;
-    border-bottom: 1px solid black;
 }
 
 .icone {
