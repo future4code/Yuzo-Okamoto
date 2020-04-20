@@ -77,6 +77,8 @@ div img {
 
 #container-para-comprar {
     background-color: #e7eb90;
+    display: flex;
+    flex-direction: column;
 }
 
 #container-para-comprar>p {
