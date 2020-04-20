@@ -160,6 +160,11 @@ td button:hover {
 
 .icone {
     width: 15px;
+    cursor: pointer;
+}
+
+.icone:active {
+    background: rgb(221, 221, 221);
 }
 
 
