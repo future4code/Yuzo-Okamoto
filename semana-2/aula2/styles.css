@@ -1,0 +1,163 @@
+
+/* TEMPLATE made by Yuzo Santana Okamoto @ GitHub https://github.com/yuzokamoto
+
+
+===== || Table of Contents || =====
+
+=== 1. Imports
+=== 2. Global Styles
+=== 3. Layout
+
+*/
+
+
+/* ===== | 1. Imports | ===== */
+
+/* ---------- | Content Separator | End of 1. Imports |---------- */ 
+
+
+
+/* ===== | 2. Global Styles | ===== */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: min(max(16px, 4vw), 22px);
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    font-size: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+
+/* ---------- | Content Separator | End of 2. Global Styles |---------- */
+
+
+
+/* ===== | 3. Layout | ===== */
+
+/* PAGE */
+
+body {
+    color: #fff;
+}
+
+.page {
+    width: 100vw;
+    height: 100%;
+}
+
+
+.header,
+.menu,
+.content1,
+.content2,
+.img,
+.extra,
+.footer
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+/* NAV */
+
+.nav {
+    height: 6vh;
+    display: flex;
+    flex-flow: row nowrap;
+    
+}
+
+.header {
+    background: #2ECC40;
+    height: 100%;
+
+    flex-grow: 1;
+}
+
+.menu {
+    background: #FFDC00;
+    height: 100%;
+
+    flex-grow: 4;
+}
+
+
+
+/* MAIN  */
+
+.main {
+    height: 88vh;
+    
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-areas:    "C1 C1 C1 C1"
+                            "C1 C1 C1 C1"
+                            "C1 C1 C1 C1"
+                            "C2 C2 C3 C3";
+}
+
+.content1 {
+    background: #F012BE;
+
+    grid-area: C1;
+}
+
+.content2 {
+    background: #0074D9;
+
+    grid-area: C2;
+}
+
+.content3 {
+    grid-area: C3;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:    "C0 C1"
+                            "C0 C2";
+}
+
+.img {
+    background: #FF4136;
+
+    grid-area: C1;
+}
+
+.extra {
+    background: #01FF70;
+
+    grid-area: C2;
+}
+
+
+
+/* FOOTER */
+
+.footer {
+    background: #B10DC9;
+    height: 6vh;
+}
