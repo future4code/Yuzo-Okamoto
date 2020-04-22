@@ -1,0 +1,205 @@
+/** 
+  *
+  *  ESTILOS GERAIS 
+  *
+  **/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-family: sans-serif;
+    font-size: 2em;
+}
+
+h2 {
+    background-color: #fe7e02;
+    padding: 10px 5px 10px 5px;
+    color: white;
+    text-align: center;
+}
+
+h3 {
+    font-weight: normal;
+}
+
+input {
+    height: 20px;
+    width: 500px;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+input:focus {
+    outline: none !important;
+}
+
+button {
+    font-weight: bold !important;
+}
+
+button:focus {
+    text-decoration: underline;
+    outline: none !important;
+}
+
+button:active {
+    border: none;
+}
+
+button:hover {
+    background: none !important;
+}
+
+img {
+    width: 100px;
+}
+
+div>p:first-child {
+    display: inline;
+}
+
+div img {
+    background: none;
+}
+
+.botao-amarelo {
+    background-color: #ffaf43;
+    width: 250px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 20px;
+    color: white;
+}
+
+.botao-amarelo:hover {
+    background-color: #c44f00;
+}
+
+.container {
+    height: 500px;
+    text-align: center;
+}
+
+.icone {
+    height: 15px;
+}
+
+
+/** 
+  *
+  *  ESTILOS HOME 
+  *
+  **/
+
+#container-de-descricao {
+    background-color: #2274a5;
+    color: white;
+    padding-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#container-de-descricao p:first-child {
+    width: 12%;
+    word-wrap: break-word;
+}
+
+#container-de-descricao>ol {
+    padding: 15px 0;
+}
+
+#container-de-descricao>ol>li {
+    padding: 0 15px;
+}
+
+#container-para-comprar {
+    background-color: #e7eb90;
+    display: flex;
+    flex-direction: column;
+}
+
+#container-para-comprar>p {
+    color: #c44f00;
+    padding: 100px 0;
+    font-size: 60px;
+}
+
+
+/**
+  *
+  *  ESTILOS COMPRAR 
+  *
+  **/
+
+div:nth-child(2),
+div:last-child {
+    text-align: center;
+}
+
+table {
+    width: 60%;
+    margin: 0 auto;
+    font-weight: bold;
+    padding-bottom: 200px;
+}
+
+td img {
+    width: 60px;
+}
+
+td button {
+    background-color: #fadf63;
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    color: black;
+}
+
+td button:hover {
+    background: rgb(173, 173, 173);
+}
+
+.container-do-search {
+    margin-top: 20px;
+    height: 100px;
+}
+
+.icone {
+    width: 15px;
+    cursor: pointer;
+}
+
+.icone:active {
+    background: rgb(221, 221, 221);
+}
+
+
+#back-button {
+    background-color: white;
+    width: 100px;
+    height: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 10px;
+    color: black;
+}
+
+#back-button:hover {
+    background-color: #635a3d
+}
+
+#back-button:active {
+    color: white;
+}
+
+body:last-child {
+    text-align: center;
+}
