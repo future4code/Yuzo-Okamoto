@@ -1,0 +1,27 @@
+
+.section-header {
+    padding-left: 2%;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.video-title {
+    padding-left: 0;
+}
+
+/* article {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+} */
+
+@media screen and (max-device-width:700px) {
+    .video-title {
+        width: 50%;
+        padding: 0;
+    }
+}
