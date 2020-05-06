@@ -1,0 +1,137 @@
+:root {
+    --bg-color-light: #fafafa;
+    --bg-color-dark: #272727;
+}
+
+html {
+    font-size: 62.5%;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: var(--bg-color-light);
+    width: 100%;
+    height: 100%;
+    font-family: sans-serif;
+    font-size: 1.75rem;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 1.4em;
+}
+
+h2 {
+    font-size:1.2em;
+}
+
+.page-wrapper {
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .title {
+        margin: 1em 0;
+        border-top: 2px solid black;
+        border-bottom: 2px solid black;
+    }
+
+main {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+    section.planner-menu {
+        height: 3em;
+        margin: 1em 0;
+        display: flex;
+        align-items: center;
+    }
+    
+        .menu-container {
+            display: flex;
+            width: 100%;
+        }
+
+            .menu-container form input {
+                height: 1.5em;
+            }
+
+            .reset-planner {
+                margin-left: auto;
+            }
+
+    section.planner-info {
+        display: flex;
+        height: 100%;
+    }
+
+        .info-container {
+            flex: 1;
+            border-left: 1px solid black;
+        }
+
+        .info-container:last-of-type {
+            border-right: 1px solid black;
+        }
+
+            .info-container h2 {
+                text-align: center;
+            }
+
+            .info-container ul {
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                padding: 0;
+            }
+
+                .info-container li {
+                    display: flex;
+                    align-items: center;
+                    padding: 0.5em 0;
+                }
+
+                    .info-container li span {
+                        margin-left: 12%;
+                        padding: 0.2em;
+                        cursor: pointer;
+                    }
+
+footer div {
+    display: flex;
+    align-items: center;
+    padding: 1em 0;
+    font-size: 0.8em;
+    font-style: italic;
+}
+
+.risked-task {
+    text-decoration: line-through;
+}
+
+@media screen and (max-width: 1000px) {
+
+    section.planner-info {
+        flex-wrap: wrap;
+    }
+
+        .info-container {
+            max-width: 172px;
+            height: auto;
+        }
+}

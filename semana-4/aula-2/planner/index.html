@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planner</title>
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <div class="page-wrapper">
+        <header>
+            <div class="title"><h1>The Minimalistic Planner</h1></div>
+        </header>
+    
+        <main class="planner">
+            <section class="planner-menu">
+                <div class="menu-container">
+                    <form action="" id="task-form">
+                        <label for="task-text"></label>
+                        <input onsubmit="setTask()"
+                        type="text" id="task-text" placeholder="Digite sua tarefa">
+
+                        <select name="task-day" id="task-day">
+                            <option value="none">escolha um dia...</option>
+                            <option value="0">Segunda</option>
+                            <option value="1">Terça</option>
+                            <option value="2">Quarta</option>
+                            <option value="3">Quinta</option>
+                            <option value="4">Sexta</option>
+                            <option value="5">Sábado</option>
+                            <option value="6">Domingo</option>
+                        </select>
+
+                        <button onclick="setTask()">Clique para salvar</button>
+                    </form>
+
+                    <form action="" class="reset-planner">
+                        <button onclick="resetPlanner">Limpar Planner</button>
+                    </form>
+                </div>
+            </section>
+    
+            <section class="planner-info">
+                <div class="info-container">
+                    <h2>Segunda</h2>
+                    <ul></ul>
+                </div>
+                <div class="info-container">
+                    <h2>Terça</h2>
+                    <ul></ul>
+                </div>
+                <div class="info-container">
+                    <h2>Quarta</h2>
+                    <ul></ul>
+                </div>
+                <div class="info-container">
+                    <h2>Quinta</h2>
+                    <ul></ul>
+                </div>
+                <div class="info-container">
+                    <h2>Sexta</h2>
+                    <ul></ul>
+                </div>
+                <div class="info-container">
+                    <h2>Sábado</h2>
+                    <ul></ul>
+                </div>
+                <div class="info-container">
+                    <h2>Domingo</h2>
+                    <ul></ul>
+                </div>
+            </section>
+        </main>
+    
+        <footer>
+            <div>Developed by Yuzo Santana Okamoto @ Github</div>
+        </footer>
+    </div>
+    
+</body>
+</html>
