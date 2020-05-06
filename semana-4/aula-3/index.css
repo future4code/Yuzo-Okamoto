@@ -1,0 +1,136 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+    font-weight: normal;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+html, body, .page-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: #fafafa;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-size: 1rem;
+}
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    margin-top: 1rem;
+    border-bottom: 1px solid black;
+}
+
+    header h1 {
+        font-size: 3rem;
+        font-weight: 600;
+        font-style: italic;
+    }
+
+main {
+    flex: 1;
+    padding: 3rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+    section {
+        font-size: 1.75rem;
+        border: 1px solid black;
+    }
+
+    section.show-posts {
+        flex: 1;
+        max-width: 50vw;
+        display: flex;
+        flex-direction: column;
+    }
+
+        section.show-posts h2 {
+            font-size: 2rem;
+            text-transform: uppercase;
+            margin-top: 2rem;
+            margin-left: 2rem;
+        }
+
+        section.show-posts article {
+            margin: 2rem 2rem;
+            padding: 1rem;
+            border: 1px solid black;
+        }
+
+            section.show-posts article > h3 {
+                margin-bottom: 0.65em;
+                font-weight: 600;
+
+            }
+
+            section.show-posts article > h6 {
+                padding-top: 1rem;  
+                text-align: right;
+                font-size: 1.5rem;
+                color: rgb(99, 99, 99);
+            }
+
+    section.create-posts {
+        flex: 1;
+        max-width: 30vw;
+    }
+
+        section.create-posts form {
+            display: flex;
+            flex-direction: column;
+        }
+
+            section.create-posts h2 {
+                font-size: 2rem;
+                text-transform: uppercase;
+                margin: 2rem 2rem;
+            }
+
+            section.create-posts form > * {
+                margin: 1rem 2rem;
+            }
+
+            section.create-posts button {
+                width: 25%;
+                margin-left: auto;
+            }
+
+                input, textarea, button {
+                    padding: 0.25rem 0.5rem;
+                }
+
+footer {
+    min-height: 5rem;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+}
+
+    footer span {
+        font-size: 1.5rem;
+    }
