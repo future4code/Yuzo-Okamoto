@@ -4,6 +4,8 @@
     ========================    
 */
 
+console.log("Execute os exercícios chamando sua respectiva função:\nex1(), ex3(), ex4(), ex5()");
+
 //  Lógica de programação
 
 /* Exercício 1

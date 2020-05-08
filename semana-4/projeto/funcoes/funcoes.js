@@ -4,6 +4,8 @@
     ========================    
 */
 
+console.log("Execute os exercícios chamando sua respectiva função:\nex1() e ex2()");
+
 //  Funções
 
 /* Exercício 1 */
