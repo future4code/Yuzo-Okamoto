@@ -9,13 +9,17 @@ console.log("Execute os exercícios chamando sua respectiva função:\nex1() e e
 //  Funções
 
 /* Exercício 1 */
+// Escreva uma função que receba um `array` de números e imprima na tela o segundo maior e o segundo menor número. Em seguida, invoque essa função.
 
 const ex1 = () => {
+    const randArray = [];
     
-    const array = [];
+    // gera um número pseudo-aleatório entre 1 e 10 para limitar o tamanho do array randArray
+    let arraySize = Math.floor(Math.random() * 10);
 
-    for (let i = 0; i<= 4; i++) {
-        array[i] = Number(prompt("Informe um valor"));
+    // cria uma quantidade delimitada de valores aleatórios entre 1 e 100 para randArray
+    for (let i = 0; i < arraySize; i++) {
+        randArray[i] = Math.floor(Math.random() * 100);
     }
 
     const data = {
@@ -25,6 +29,7 @@ const ex1 = () => {
         big: -Infinity
     };
     
+    // varre um array recebido e armazena no objeto data os dois menores e maiores valores
     const findExtremes = (array) => {
         for (num of array) {
             if (num < data.smallest) {
@@ -52,6 +57,7 @@ const ex1 = () => {
 
 
 /* Exercício 2 */
+// Escreva uma função não nomeada que faça um `alert("Hello Future4");`. Em seguida, invoque essa função.
 
 const ex2 = () => {
     const greet = (msg) => {
