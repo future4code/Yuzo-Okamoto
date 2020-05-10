@@ -10,11 +10,7 @@ export const funcoesArrayEx5 = () => {
 
     // função de atualização das contas
     const atualizarSaldo = contas.forEach((conta) => {
-        let compraTotal = 0;
-        conta.compras.forEach((compra) => {
-            compraTotal += compra;
-        });
-        conta.saldoTotal = conta.saldoTotal - compraTotal;
+        conta.saldoTotal -= conta.compras.reduce((acumulador, valorAtual) => acumulador + valorAtual, 0)
     });
 
     // chama a função de atualização e exibe o resultado final
