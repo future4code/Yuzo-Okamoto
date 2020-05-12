@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Expense Control App</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
+</head>
+<body>
+    <div class="page-wrapper">
+        <header>
+            <div class="container">
+                <h1>Minimalist Expense Control App</h1>
+            </div>
+        </header>
+        
+        <main>
+            <article class="container">
+                <section>
+                    <div>
+                        <h2>Registration</h2>
+                        <form class="exp-register-form">
+                            <!-- Selecionar Tipo de Despesa -->
+                            <label for="exp-type" class="exp-label">Expense type</label>
+                            <select id="exp-type">
+                                <option value="none">choose type</option>
+                                <option value="Essential">Essential</option>
+                                <option value="Healthcare">Healthcare</option>
+                                <option value="Emergency">Emergency</option>
+                                <option value="Extra">Extra</option>
+                            </select>
+
+                            <!-- Informar Custo de Despesa -->
+                            <label for="exp-value" class="exp-label">Expense cost in $</label>
+                            <input onkeydown="checkIfEnter(event)" id="exp-cost" type="text">
+
+                            <!-- Informar Descrição de Despesa -->
+                            <label for="exp-description" class="exp-label">Expense description</label>
+                            <textarea id="exp-description" cols="30" rows="5"></textarea>
+
+                            <!-- Botão de Registro -->
+                            <button onclick="registerExpense(event)" class="exp-register-btn">Register</button>
+                        </form>
+                    </div>
+                </section>
+    
+                <section>
+                    <div>
+                        <h2>View Expenses</h2>
+                        <form action="">
+                            <select id="filter-type">
+                                <option value="none">show all</option>
+                                <option value="Essential">Essential</option>
+                                <option value="Healthcare">Healthcare</option>
+                                <option value="Emergency">Emergency</option>
+                                <option value="Extra">Extra</option>
+                            </select>
+
+                            <button onclick="filterExp()">Filter</button>
+                        </form>
+
+                        <div id="show-exp-div" class="show-expenses-container">
+                            <!-- <div class="exp-div">
+                                <div>
+                                    <div>Essential</div>
+                                    <div>$120,00</div>
+                                </div>
+                                <div>Rent</div>
+                            </div> -->
+                        </div>
+                    </div>
+                    
+                </section>
+    
+                <section>
+                    <div>
+                        <h2>Show Extract</h2>
+                        <div id="exp-extract">
+
+                        </div>
+                    </div>
+                </section>
+            </article>
+        </main>
+
+        <footer>
+            <div class="container">
+                <h6>Developed by Yuzo Santana Okamoto @ github</h6>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
