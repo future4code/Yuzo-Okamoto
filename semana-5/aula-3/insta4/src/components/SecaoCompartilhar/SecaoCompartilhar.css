@@ -1,0 +1,20 @@
+
+
+.share-container, .btn, .comment {
+    width: 100%;
+}
+
+.btn {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px 0;
+}
+
+.comment {
+    display: flex;
+}
+
+.comment textarea {
+    flex: 1;
+
+}
