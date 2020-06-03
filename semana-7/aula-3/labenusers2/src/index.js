@@ -15,11 +15,19 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
   }
   html {
+    color: white;
     font-size: 62.5%;
+    font-family: sans-serif;
   }
   body {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     box-sizing: border-box;
+  }
+  ul {
+    list-style-type: none;
+  }
+  h1 {
+    font-size: 2.2rem;
   }
 `;
 
