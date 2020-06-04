@@ -50,7 +50,7 @@ const NavItem = styled.span`
 
 class App extends React.Component {
   state = {
-    page: "cep",
+    page: "poke",
   };
 
   navItemHandler = (e) => {
