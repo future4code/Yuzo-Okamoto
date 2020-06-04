@@ -1,0 +1,8 @@
+{
+  "short_name": "labelist",
+  "name": "Labelist - Gerenciador de Tarefas",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
