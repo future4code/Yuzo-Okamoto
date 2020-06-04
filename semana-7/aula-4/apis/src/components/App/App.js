@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 import LandingPage from "../Landing/LandingPage";
 import BoredPage from "../APIs/Bored/BoredPage";
+import CepPage from "../APIs/Cep/CepPage";
+import PokePage from "../APIs/Poke/PokePage";
 
 const AppWrapper = styled.div`
   height: 100%;
@@ -48,7 +50,7 @@ const NavItem = styled.span`
 
 class App extends React.Component {
   state = {
-    page: "bored",
+    page: "cep",
   };
 
   navItemHandler = (e) => {
@@ -61,6 +63,10 @@ class App extends React.Component {
       switch (this.state.page) {
         case "bored":
           return <BoredPage />;
+        case "cep":
+          return <CepPage />;
+        case "poke":
+          return <PokePage />;
         default:
           //home
           return <LandingPage />;
@@ -93,18 +99,18 @@ class App extends React.Component {
               <NavItem
                 onClick={this.navItemHandler}
                 page={this.state.page}
-                id="outra1"
+                id="cep"
               >
-                Outra1
+                CEP
               </NavItem>
             </div>
             <div>
               <NavItem
                 onClick={this.navItemHandler}
                 page={this.state.page}
-                id="outra2"
+                id="poke"
               >
-                Outra2
+                Pokemon
               </NavItem>
             </div>
           </nav>
