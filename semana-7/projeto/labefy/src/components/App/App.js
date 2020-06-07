@@ -9,32 +9,46 @@ import LandingPage from "../Pages/Landing/LandingPage";
 class App extends React.Component {
   state = {
     currentPage: "landing",
+    currentNav: "home",
   };
 
-  handlePageChange = (page) => {
-    this.setState({ currentPage: page });
+  handlePageChange = (newPage) => {
+    this.setState({ currentPage: newPage });
+  };
+
+  handleNavChange = (newNav) => {
+    this.state({ currentNav: newNav });
   };
 
   render() {
-    const renderCurrentPage = () => {
+    const renderHeader = () => {
+      if (this.state.currentPage === "login") {
+        return <></>;
+      } else {
+        return <Header handlePageChange={this.handlePageChange} />;
+      }
+    };
+
+    const renderMain = () => {
       switch (this.state.currentPage) {
-        case "landing":
-          return <LandingPage handlePageChange={this.handlePageChange} />;
-        default:
+        case "login":
           return <LoginPage />;
+        case "landing":
+          return (
+            <LandingPage
+              currentNav={this.state.currentNav}
+              handleNavChange={this.handleNavChange}
+            />
+          );
+        default:
+          return <main>Página não encontrada</main>;
       }
     };
 
     return (
       <StyledApp>
-        {this.state.currentPage === "login" ? (
-          <></>
-        ) : (
-          <>
-            <Header handlePageChange={this.handlePageChange} />
-          </>
-        )}
-        {renderCurrentPage()}
+        {renderHeader()}
+        {renderMain()}
       </StyledApp>
     );
   }

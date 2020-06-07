@@ -1,5 +1,11 @@
 import React from "react";
-import { StyledHeader, HeaderLogo, HeaderNav, NavSelect } from "./Style.js";
+import {
+  StyledHeader,
+  HeaderLogo,
+  HeaderNav,
+  NavPlaylists,
+  NavSelect,
+} from "./Style.js";
 
 import NavItem from "./NavItem/NavItem";
 
@@ -8,9 +14,8 @@ class Header extends React.Component {
     activeNav: "home",
   };
 
-  handleNavItem = (id) => {
-    console.log(id);
-    this.setState({ activeNav: id });
+  handleNavItem = (newNav) => {
+    this.setState({ activeNav: newNav });
   };
 
   handleNavSelect = (event) => {
@@ -46,6 +51,16 @@ class Header extends React.Component {
             name="Sua Biblioteca"
           />
         </HeaderNav>
+
+        <NavPlaylists>
+          <h6>PLAYLISTS</h6>
+          <p>
+            <span>+</span>Criar playlist
+          </p>
+          <div>Playlist1</div>
+          <div>Playlist2</div>
+          <div>Playlist3</div>
+        </NavPlaylists>
 
         <NavSelect onChange={this.handleNavSelect}>
           <option value="">usuário</option>
