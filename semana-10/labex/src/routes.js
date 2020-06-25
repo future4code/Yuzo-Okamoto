@@ -16,10 +16,10 @@ const Routes = () => {
     <Switch>
       <Route path="/" exact component={HomePage} />
       <Route path="/about" exact component={AboutPage} />
-      <Route path="/trips" component={TripListPage} />
-      <Route path="/trips/:id" component={TripDetailsPage} />
-      <Route path="/login" component={LoginPage} />
-      <Route path="/admin" component={AdminPage} />
+      <Route path="/trips" exact component={TripListPage} />
+      <Route path="/trips/:id" exact component={TripDetailsPage} />
+      <Route path="/login" exact component={LoginPage} />
+      <Route path="/admin" exact component={AdminPage} />
       <Route path="*" component={NotFoundPage} />
     </Switch>
   );

@@ -17,6 +17,11 @@ const GlobalStyle = createGlobalStyle`
   html, body, #root {
     height: 100%;
   }
+  input {
+    &:invalid {
+      border: 2px solid red;
+    }
+  }
 `;
 
 const theme = createMuiTheme({

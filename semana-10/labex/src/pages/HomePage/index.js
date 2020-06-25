@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const StyledButton = styled.button`
+const EnrollActionButton = styled.button`
   ${({ theme }) => `
   margin-top: 16px;
   padding: ${theme.spacing(1, 2)};
@@ -78,7 +78,9 @@ const HomePage = () => {
           <br />
           Check out our available trips
         </Typography>
-        <StyledButton onClick={enrollAction}>I want to enroll</StyledButton>
+        <EnrollActionButton onClick={enrollAction}>
+          I want to enroll
+        </EnrollActionButton>
       </Grid>
       <Grid item xs={12} md={6} className={classes.heroImage}>
         <Box className={classes.myHero} />

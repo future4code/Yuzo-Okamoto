@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { Grid, Typography, Card, Paper, CardContent } from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -44,6 +45,10 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
+    transition: "transform 0.5s ease-in-out",
+    "&:hover": {
+      transform: "translateY(-10px)",
+    },
   },
   cardImage: {
     width: 150,
@@ -79,7 +84,7 @@ const TripListPage = () => {
   const classes = useStyles();
 
   return (
-    <Grid>
+    <Grid container>
       <Grid item container xs={12} className={classes.root}>
         <Grid item xs={12} className={classes.gridTitle}>
           <Typography variant="h6" className={classes.gridTitleText}>
@@ -90,7 +95,11 @@ const TripListPage = () => {
           {trips &&
             trips.map((trip) => (
               <Grid item xs={12} md={4} key={trip.id}>
-                <Paper className={classes.cardWrapper}>
+                <Paper
+                  component={Link}
+                  to={`/trips/${trip.id}`}
+                  className={classes.cardWrapper}
+                >
                   <Card>
                     <CardContent className={classes.cardContent}>
                       <div className={classes.cardImage} />
