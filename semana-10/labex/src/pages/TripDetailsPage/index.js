@@ -14,10 +14,12 @@ import {
   Backdrop,
   TextField,
   Divider,
+  Button,
 } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
 import { makeStyles } from "@material-ui/core/styles";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -131,6 +133,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.myPalette.primary,
     marginLeft: "auto",
   },
+  input: {
+    "&:invalid": {
+      border: "1px solid red",
+    },
+  },
 }));
 
 const EnrollActionButton = styled.button`
@@ -157,6 +164,20 @@ const EnrollActionButton = styled.button`
   }`}
 `;
 
+const DisabledButton = styled.button`
+  ${({ theme }) => `
+  margin-top: 16px;
+  padding: ${theme.spacing(1, 2)};
+  cursor: default;
+  border: 2px solid ${theme.myPalette.normalText};
+  border-radius: ${theme.shape.borderRadius}px;
+  color: ${theme.myPalette.normalText};
+  font-weight: 900;
+  text-transform: uppercase;
+  background: none;
+`}
+`;
+
 const TripDetailsPage = (props) => {
   const classes = useStyles();
   const history = useHistory();
@@ -165,11 +186,13 @@ const TripDetailsPage = (props) => {
     age: "",
     profession: "",
     applicationText: "",
+    country: "Brazil", // To correct, Autocomplete + React-Material-UI-Form-Validator
   });
 
   const [trips, setTrips] = useState([]);
   const [openForm, setOpenForm] = useState(false);
   const [countries, setCountries] = useState([]);
+  const [enrolledTrips, setEnrolledTrips] = useState({});
 
   useEffect(() => {
     (async () => {
@@ -192,6 +215,10 @@ const TripDetailsPage = (props) => {
         console.log(error);
       }
     })();
+    window.sessionStorage.getItem("enrolledTrips") &&
+      setEnrolledTrips(
+        JSON.parse(window.sessionStorage.getItem("enrolledTrips"))
+      );
   }, []);
 
   const returnAction = () => {
@@ -205,6 +232,26 @@ const TripDetailsPage = (props) => {
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     onChange(name, value);
+  };
+
+  const submitEnrollment = async (tripId) => {
+    const body = { ...form };
+    body.age = Number(body.age);
+    try {
+      await axios.post(
+        `https://us-central1-labenu-apis.cloudfunctions.net/labeX/yuzo/trips/${tripId}/apply`,
+        body
+      );
+      window.sessionStorage.setItem(
+        "enrolledTrips",
+        JSON.stringify({ ...enrolledTrips, [tripId]: true })
+      );
+      setEnrolledTrips({ ...enrolledTrips, [tripId]: true });
+      handleOpenForm();
+    } catch (error) {
+      alert("Erro");
+      console.log(error);
+    }
   };
 
   return (
@@ -250,9 +297,18 @@ const TripDetailsPage = (props) => {
                     >
                       {`${trip.durationInDays} dias`}
                     </Typography>
-                    <EnrollActionButton type="button" onClick={handleOpenForm}>
-                      I want to enroll
-                    </EnrollActionButton>
+                    {enrolledTrips.hasOwnProperty(trip.id) ? (
+                      <DisabledButton type="button" disabled>
+                        You have enrolled
+                      </DisabledButton>
+                    ) : (
+                      <EnrollActionButton
+                        type="button"
+                        onClick={handleOpenForm}
+                      >
+                        I want to enroll
+                      </EnrollActionButton>
+                    )}
                   </Box>
                   <Box className={classes.imageBox}>
                     <div className={classes.tripImage}></div>
@@ -272,37 +328,77 @@ const TripDetailsPage = (props) => {
                   <Fade in={openForm}>
                     <div className={classes.modalPaper}>
                       <Typography className={classes.formTitle}>
-                        Enrollment
+                        {trip.name}
                       </Typography>
                       <Divider className={classes.formDivider} />
-                      <form className={classes.form}>
-                        <TextField
+                      <ValidatorForm
+                        useref="form"
+                        className={classes.form}
+                        onSubmit={() => {
+                          submitEnrollment(trip.id);
+                        }}
+                      >
+                        <TextValidator
+                          autoComplete="off"
                           label="Name"
                           variant="outlined"
-                          inputProps={{ name: "name" }}
+                          name="name"
+                          validators={[
+                            "required",
+                            "matchRegexp:^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]{3,}$",
+                          ]}
+                          errorMessages={[
+                            "This field is required",
+                            "Mininum of 3 letters",
+                          ]}
                           onChange={handleInputChange}
                           value={form.name}
                         />
-                        <TextField
+                        <TextValidator
+                          autoComplete="off"
                           label="Age"
                           variant="outlined"
-                          inputProps={{ name: "age" }}
+                          name="age"
                           onChange={handleInputChange}
                           value={form.age}
+                          type="number"
+                          validators={[
+                            "required",
+                            "minNumber:18",
+                            "maxNumber:150",
+                          ]}
+                          errorMessages={[
+                            "This field is required",
+                            "Mininum of 18 years old",
+                            "Maximum of 150 years old",
+                          ]}
                         />
-                        <TextField
+                        <TextValidator
+                          autoComplete="off"
                           label="Profession"
                           variant="outlined"
-                          inputProps={{ name: "profession" }}
+                          name="profession"
                           onChange={handleInputChange}
                           value={form.profession}
+                          validators={[
+                            "required",
+                            "matchRegexp:^[a-zA-Z]{3,30}$",
+                          ]}
+                          errorMessages={[
+                            "This field is required",
+                            "Must have between 3 and 30 letters",
+                          ]}
                         />
                         {countries ? (
                           <Autocomplete
+                            name="country"
                             options={countries}
+                            onChange={(event, value) => {
+                              onChange("country", value.name);
+                            }}
                             getOptionLabel={(country) => country.name}
                             renderInput={(params) => (
-                              <TextField
+                              <TextValidator
                                 {...params}
                                 label="Country"
                                 variant="outlined"
@@ -310,9 +406,11 @@ const TripDetailsPage = (props) => {
                             )}
                           />
                         ) : (
-                          <TextField label="Country" variant="outlined" />
+                          <TextValidator label="Country" variant="outlined" />
                         )}
-                        <TextField
+                        {/* prettier-ignore */}
+                        <TextValidator
+                          autoComplete="off"
                           label="Application Text"
                           variant="outlined"
                           size="medium"
@@ -321,14 +419,22 @@ const TripDetailsPage = (props) => {
                             shrink: true,
                           }}
                           className={classes.formApplication}
-                          inputProps={{ name: "applicationText" }}
+                          name="applicationText"
                           onChange={handleInputChange}
                           value={form.applicationText}
+                          validators={[
+                            "required",
+                            "matchRegexp:^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ,.-:]{30,100}$",
+                          ]}
+                          errorMessages={[
+                            "This field is required",
+                            "Must have between 30 and 100 characters",
+                          ]}
                         />
-                        <EnrollActionButton type="button">
+                        <EnrollActionButton type="submit">
                           Send Application
                         </EnrollActionButton>
-                      </form>
+                      </ValidatorForm>
                     </div>
                   </Fade>
                 </Modal>
