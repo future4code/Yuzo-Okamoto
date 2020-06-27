@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import { darken, Grid, Typography, Box } from "@material-ui/core";
+import { darken, Grid, Typography, Box, Grow } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -68,23 +68,27 @@ const HomePage = () => {
 
   return (
     <Grid item container xs={12} className={classes.root}>
-      <Grid item xs={12} md={6} className={classes.heroText}>
-        <Typography variant="h4" className={classes.title}>
-          The Best Space Travel Agency
-          <br /> of The Modern Age
-        </Typography>
-        <Typography variant="h5" className={classes.subtitle}>
-          No burocracy, just click and enroll
-          <br />
-          Check out our available trips
-        </Typography>
-        <EnrollActionButton onClick={enrollAction}>
-          I want to enroll
-        </EnrollActionButton>
-      </Grid>
-      <Grid item xs={12} md={6} className={classes.heroImage}>
-        <Box className={classes.myHero} />
-      </Grid>
+      <Grow in={true} timeout={1500}>
+        <Grid item xs={12} md={6} className={classes.heroText}>
+          <Typography variant="h4" className={classes.title}>
+            The Best Space Travel Agency
+            <br /> of The Modern Age
+          </Typography>
+          <Typography variant="h5" className={classes.subtitle}>
+            No burocracy, just click and enroll
+            <br />
+            Check out our available trips
+          </Typography>
+          <EnrollActionButton onClick={enrollAction}>
+            I want to enroll
+          </EnrollActionButton>
+        </Grid>
+      </Grow>
+      <Grow in={true} timeout={1000}>
+        <Grid item xs={12} md={6} className={classes.heroImage}>
+          <Box className={classes.myHero} />
+        </Grid>
+      </Grow>
     </Grid>
   );
 };

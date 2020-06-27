@@ -12,13 +12,13 @@ import {
   Modal,
   Fade,
   Backdrop,
-  TextField,
   Divider,
-  Button,
+  Grow,
 } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
 import { makeStyles } from "@material-ui/core/styles";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import CloseIcon from "@material-ui/icons/Close";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 
 const useStyles = makeStyles((theme) => ({
@@ -47,8 +47,7 @@ const useStyles = makeStyles((theme) => ({
   },
   navigationButton: {
     justifySelf: "flex-start",
-    position: "absolute",
-    left: "35%",
+    transform: "translateX(-5vw)",
   },
   navigationIcon: {
     color: theme.myPalette.normalText,
@@ -104,6 +103,11 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+  },
+  modalHeader: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   modalPaper: {
     backgroundColor: "#ffffff",
@@ -268,52 +272,57 @@ const TripDetailsPage = (props) => {
                 className={classes.root}
                 key={trip.id}
               >
-                <Grid item xs={12} className={classes.gridTitle}>
-                  <IconButton
-                    onClick={returnAction}
-                    className={classes.navigationButton}
-                  >
-                    <ArrowBackIcon className={classes.navigationIcon} />
-                  </IconButton>
-                  <Box>
-                    <Typography className={classes.gridTitleText}>
-                      {trip.planet}
-                    </Typography>
-                    <Typography className={classes.gridTitleText}>
-                      {trip.date}
-                    </Typography>
-                  </Box>
-                </Grid>
-                <Grid item xs={12} className={classes.gridTrip}>
-                  <Box className={classes.textBox}>
-                    <Typography className={classes.boxTitle}>
-                      {trip.name}
-                    </Typography>
-                    <Typography className={classes.boxText}>
-                      {trip.description}
-                    </Typography>
-                    <Typography
-                      className={`${classes.boxText} ${classes.boxTextDays}`}
+                <Grow in={trips ? true : false} timeout={1000}>
+                  <Grid item xs={12} className={classes.gridTitle}>
+                    <IconButton
+                      onClick={returnAction}
+                      className={classes.navigationButton}
                     >
-                      {`${trip.durationInDays} dias`}
-                    </Typography>
-                    {enrolledTrips.hasOwnProperty(trip.id) ? (
-                      <DisabledButton type="button" disabled>
-                        You have enrolled
-                      </DisabledButton>
-                    ) : (
-                      <EnrollActionButton
-                        type="button"
-                        onClick={handleOpenForm}
+                      <ArrowBackIcon className={classes.navigationIcon} />
+                    </IconButton>
+                    <Box>
+                      <Typography className={classes.gridTitleText}>
+                        {trip.planet}
+                      </Typography>
+                      <Typography className={classes.gridTitleText}>
+                        {trip.date}
+                      </Typography>
+                    </Box>
+                  </Grid>
+                </Grow>
+
+                <Grow in={trips ? true : false} timeout={1500}>
+                  <Grid item xs={12} className={classes.gridTrip}>
+                    <Box className={classes.textBox}>
+                      <Typography className={classes.boxTitle}>
+                        {trip.name}
+                      </Typography>
+                      <Typography className={classes.boxText}>
+                        {trip.description}
+                      </Typography>
+                      <Typography
+                        className={`${classes.boxText} ${classes.boxTextDays}`}
                       >
-                        I want to enroll
-                      </EnrollActionButton>
-                    )}
-                  </Box>
-                  <Box className={classes.imageBox}>
-                    <div className={classes.tripImage}></div>
-                  </Box>
-                </Grid>
+                        {`${trip.durationInDays} dias`}
+                      </Typography>
+                      {enrolledTrips.hasOwnProperty(trip.id) ? (
+                        <DisabledButton type="button" disabled>
+                          You have enrolled
+                        </DisabledButton>
+                      ) : (
+                        <EnrollActionButton
+                          type="button"
+                          onClick={handleOpenForm}
+                        >
+                          I want to enroll
+                        </EnrollActionButton>
+                      )}
+                    </Box>
+                    <Box className={classes.imageBox}>
+                      <div className={classes.tripImage}></div>
+                    </Box>
+                  </Grid>
+                </Grow>
 
                 <Modal
                   className={classes.modal}
@@ -327,9 +336,14 @@ const TripDetailsPage = (props) => {
                 >
                   <Fade in={openForm}>
                     <div className={classes.modalPaper}>
-                      <Typography className={classes.formTitle}>
-                        {trip.name}
-                      </Typography>
+                      <Box className={classes.modalHeader}>
+                        <Typography className={classes.formTitle}>
+                          {trip.name}
+                        </Typography>
+                        <IconButton onClick={handleOpenForm}>
+                          <CloseIcon />
+                        </IconButton>
+                      </Box>
                       <Divider className={classes.formDivider} />
                       <ValidatorForm
                         useref="form"

@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { Grid, Typography, Card, Paper, CardContent } from "@material-ui/core";
+import {
+  Grid,
+  Typography,
+  Card,
+  Paper,
+  CardContent,
+  Grow,
+} from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -86,39 +93,43 @@ const TripListPage = () => {
   return (
     <Grid container>
       <Grid item container xs={12} className={classes.root}>
-        <Grid item xs={12} className={classes.gridTitle}>
-          <Typography variant="h6" className={classes.gridTitleText}>
-            All Available Trips
-          </Typography>
-        </Grid>
+        <Grow in={trips ? true : false} timeout={2000}>
+          <Grid item xs={12} className={classes.gridTitle}>
+            <Typography variant="h6" className={classes.gridTitleText}>
+              All Available Trips
+            </Typography>
+          </Grid>
+        </Grow>
         <Grid item container xs={12} spacing={3}>
           {trips &&
             trips.map((trip) => (
-              <Grid item xs={12} md={4} key={trip.id}>
-                <Paper
-                  component={Link}
-                  to={`/trips/${trip.id}`}
-                  className={classes.cardWrapper}
-                >
-                  <Card>
-                    <CardContent className={classes.cardContent}>
-                      <div className={classes.cardImage} />
-                      <Typography className={classes.cardTitle}>
-                        {trip.name}
-                      </Typography>
-                      <Typography className={classes.cardPlanet}>
-                        {trip.planet}
-                      </Typography>
-                      <Typography className={classes.cardDate}>
-                        {trip.date}
-                      </Typography>
-                      <Typography className={classes.cardDays}>
-                        {`${trip.durationInDays} dias`}
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                </Paper>
-              </Grid>
+              <Grow in={trips ? true : false} timeout={1000} key={trip.id}>
+                <Grid item xs={12} md={4} key={trip.id}>
+                  <Paper
+                    component={Link}
+                    to={`/trips/${trip.id}`}
+                    className={classes.cardWrapper}
+                  >
+                    <Card>
+                      <CardContent className={classes.cardContent}>
+                        <div className={classes.cardImage} />
+                        <Typography className={classes.cardTitle}>
+                          {trip.name}
+                        </Typography>
+                        <Typography className={classes.cardPlanet}>
+                          {trip.planet}
+                        </Typography>
+                        <Typography className={classes.cardDate}>
+                          {trip.date}
+                        </Typography>
+                        <Typography className={classes.cardDays}>
+                          {`${trip.durationInDays} dias`}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Paper>
+                </Grid>
+              </Grow>
             ))}
         </Grid>
       </Grid>
