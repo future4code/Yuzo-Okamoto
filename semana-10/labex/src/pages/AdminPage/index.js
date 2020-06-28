@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../../context";
 
-const AdminPage = () => (
-  <>
-    <p>AdminPage</p>
-  </>
-);
+const AdminPage = () => {
+  return (
+    <>
+      <p>AdminPage</p>
+    </>
+  );
+};
 export default AdminPage;

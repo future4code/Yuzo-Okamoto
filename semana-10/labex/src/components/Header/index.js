@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../../context";
 
 import { Grid, Typography, MenuItem } from "@material-ui/core";
 
@@ -25,7 +26,11 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: '"Krona One", sans-serif',
     fontStyle: "italic",
   },
-  navList: {},
+  navList: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
   navItem: {
     fontSize: 18,
     fontWeight: 900,
@@ -38,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Header = () => {
   const classes = useStyles();
+  const { authenticated, handleLogout } = useContext(Context);
 
   return (
     <Grid item container xs={12} className={classes.nav}>
@@ -57,26 +63,33 @@ const Header = () => {
         sm={5}
         className={classes.navList}
       >
-        <Grid item xs={3}>
-          <MenuItem component={Link} to={"/"} className={classes.navItem}>
-            home
+        <MenuItem component={Link} to={"/"} className={classes.navItem}>
+          home
+        </MenuItem>
+
+        <MenuItem component={Link} to={"/about"} className={classes.navItem}>
+          about
+        </MenuItem>
+
+        <MenuItem component={Link} to={"/trips"} className={classes.navItem}>
+          trips
+        </MenuItem>
+
+        {authenticated && (
+          <MenuItem component={Link} to={"/admin"} className={classes.navItem}>
+            admin
           </MenuItem>
-        </Grid>
-        <Grid item xs={3}>
-          <MenuItem component={Link} to={"/about"} className={classes.navItem}>
-            about
+        )}
+
+        {authenticated ? (
+          <MenuItem onClick={handleLogout} className={classes.navItem}>
+            logout
           </MenuItem>
-        </Grid>
-        <Grid item xs={3}>
-          <MenuItem component={Link} to={"/trips"} className={classes.navItem}>
-            trips
-          </MenuItem>
-        </Grid>
-        <Grid item xs={3}>
+        ) : (
           <MenuItem component={Link} to={"/login"} className={classes.navItem}>
             login
           </MenuItem>
-        </Grid>
+        )}
       </Grid>
     </Grid>
   );

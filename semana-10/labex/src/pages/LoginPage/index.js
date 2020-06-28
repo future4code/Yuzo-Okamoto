@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
+import { Context } from "../../context";
 import { Grid, Box, Grow, TextField, Button, Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { useForm } from "../../hooks";
@@ -66,31 +66,17 @@ const LoginPage = () => {
     username: "admin",
     password: "admin123",
   });
+  const { authenticated, handleLogin } = useContext(Context);
 
   const formHandler = (e) => {
     const { name, value } = e.target;
     onChange(name, value);
   };
 
-  const handleLogin = () => {
-    (async () => {
-      const body = {
-        email: "astrodev@gmail.com.br",
-        password: "123456",
-      };
+  if (authenticated) {
+    history.replace("/trips");
+  }
 
-      try {
-        const response = await axios.post(
-          "https://us-central1-labenu-apis.cloudfunctions.net/labeX/yuzo/login",
-          body
-        );
-        window.sessionStorage.setItem("token", response.data.token);
-        history.replace("/");
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-  };
   return (
     <Grow in={true} timeout={1000}>
       <Grid item container xs={12} className={classes.root}>

@@ -1,6 +1,6 @@
 import React from "react";
 import Routes from "./routes.js";
-
+import { AuthProvider } from "./context";
 import { Grid, Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -21,14 +21,16 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const classes = useStyles();
   return (
-    <Paper className={classes.root}>
-      <Grid container>
-        <Grid item container xs={12} className={classes.wrapper}>
-          <Header />
-          <Routes />
+    <AuthProvider>
+      <Paper className={classes.root}>
+        <Grid container>
+          <Grid item container xs={12} className={classes.wrapper}>
+            <Header />
+            <Routes />
+          </Grid>
         </Grid>
-      </Grid>
-    </Paper>
+      </Paper>
+    </AuthProvider>
   );
 }
 
