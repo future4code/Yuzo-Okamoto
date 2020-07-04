@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import week from './data/week';
-import api from './api/api';
-import useForm from './hooks/useForm';
-import DayCard from './components/DayCard';
-import { AppWrap, Header, Form, FieldGroup, Main } from './App.styles';
+import week from '../../data/week';
+import api from '../../api/api';
+import useForm from '../../hooks/useForm';
+import DayCard from '../DayCard';
+import { AppWrap, Header, Form, FieldGroup, Main } from './styles';
 
 function App() {
   const [taskList, setTaskList] = useState([]);
@@ -33,15 +33,34 @@ function App() {
     };
     try {
       await api.post('/', body);
+      getTaskList();
+      setFields({ clear: true });
     } catch (error) {
       console.debug('Create Task Axios', error.data);
+    }
+  };
+
+  const editTask = async (taskId, body) => {
+    try {
+      await api.put(`/${taskId}`, body);
+      getTaskList();
+    } catch (error) {
+      console.debug('PUT Task Axios', error.data);
+    }
+  };
+
+  const deleteTask = async (taskId) => {
+    try {
+      await api.delete(`/${taskId}`);
+      getTaskList();
+    } catch (error) {
+      console.debug('DELETE Task Axios', error.data);
     }
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     createTask();
-    getTaskList();
   };
 
   return (
@@ -57,7 +76,9 @@ function App() {
               <input
                 id='taskName'
                 value={fields.taskName}
-                onChange={setFields}
+                onChange={(e) =>
+                  setFields({ id: e.target.id, value: e.target.value })
+                }
                 type='text'
                 placeholder='Name...'
                 required
@@ -68,7 +89,13 @@ function App() {
 
             <FieldGroup>
               <label htmlFor='taskDay'>Task Day</label>
-              <select id='taskDay' value={fields.taskDay} onChange={setFields}>
+              <select
+                id='taskDay'
+                value={fields.taskDay}
+                onChange={(e) =>
+                  setFields({ id: e.target.id, value: e.target.value })
+                }
+              >
                 {week.map((day) => (
                   <option key={day.name}>{day.name}</option>
                 ))}
@@ -84,7 +111,9 @@ function App() {
 
       <Main>
         {week.map((day) => (
-          <DayCard {...{ key: day.name, day, taskList }} />
+          <DayCard
+            {...{ key: day.name, day, taskList, editTask, deleteTask }}
+          />
         ))}
       </Main>
     </AppWrap>

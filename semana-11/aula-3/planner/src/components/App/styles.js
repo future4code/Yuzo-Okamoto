@@ -9,8 +9,9 @@ const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: center;
-  h1 {
-    cursor: pointer;
+  padding: 32px 0;
+  > div {
+    padding: 0 16px;
   }
 `;
 
@@ -34,8 +35,6 @@ const FieldGroup = styled.div`
   input[type='number'],
   textarea,
   fieldset {
-    /* required to properly style form 
-   elements on WebKit based browsers */
     -webkit-appearance: none;
 
     width: 100%;
