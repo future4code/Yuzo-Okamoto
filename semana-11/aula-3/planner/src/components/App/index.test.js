@@ -8,8 +8,7 @@ import App from './index';
 api.get = jest.fn().mockResolvedValue({ data: [] });
 api.post = jest.fn().mockResolvedValue();
 api.put = jest.fn().mockResolvedValue();
-
-beforeEach(() => {});
+api.delete = jest.fn().mockResolvedValue();
 
 it('renders correctly', () => {
   const {
