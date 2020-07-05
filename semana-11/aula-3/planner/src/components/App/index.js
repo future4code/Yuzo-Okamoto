@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import week from '../../data/week';
-import api from '../../api/api';
+import api from '../../api';
 import useForm from '../../hooks/useForm';
 import DayCard from '../DayCard';
 import { AppWrap, Header, Form, FieldGroup, Main } from './styles';
@@ -91,13 +91,16 @@ function App() {
               <label htmlFor='taskDay'>Task Day</label>
               <select
                 id='taskDay'
+                data-testid='taskDay'
                 value={fields.taskDay}
                 onChange={(e) =>
                   setFields({ id: e.target.id, value: e.target.value })
                 }
               >
                 {week.map((day) => (
-                  <option key={day.name}>{day.name}</option>
+                  <option key={day.name} data-testid={day.name}>
+                    {day.name}
+                  </option>
                 ))}
               </select>
             </FieldGroup>
