@@ -1,6 +1,5 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 import api from '../../api';
 import App from './index';
@@ -42,23 +41,4 @@ it('renders correctly', () => {
   expect(getByText('Friday', { selector: 'h2' }));
   expect(getByText('Saturday', { selector: 'h2' }));
   expect(getByText('Sunday', { selector: 'h2' }));
-});
-
-describe('New task name form', () => {
-  it('updates on change', () => {
-    const { getByPlaceholderText, debug, getByTestId } = render(<App />);
-
-    const name = getByPlaceholderText('Name...');
-    userEvent.type(name, 'Maratona');
-    expect(name).toHaveValue('Maratona');
-
-    const day = getByTestId('taskDay');
-    const monday = getByTestId('Monday');
-    const saturday = getByTestId('Saturday');
-    userEvent.selectOptions(day, ['Saturday']);
-    expect(monday.selected).toBe(false);
-    expect(saturday.selected).toBe(true);
-
-    debug();
-  });
 });

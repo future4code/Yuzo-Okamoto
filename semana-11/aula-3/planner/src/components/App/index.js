@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import week from '../../data/week';
 import api from '../../api';
 import useForm from '../../hooks/useForm';
+import Header from '../Header';
 import DayCard from '../DayCard';
-import { AppWrap, Header, Form, FieldGroup, Main } from './styles';
+import { AppWrap, Main } from './styles';
 
 function App() {
   const [taskList, setTaskList] = useState([]);
@@ -65,53 +66,7 @@ function App() {
 
   return (
     <AppWrap>
-      <Header>
-        <div>
-          <h1>Weekly Planner</h1>
-        </div>
-        <div>
-          <Form autoComplete='off' onSubmit={handleSubmit}>
-            <FieldGroup>
-              <label htmlFor='taskName'>Task Name</label>
-              <input
-                id='taskName'
-                value={fields.taskName}
-                onChange={(e) =>
-                  setFields({ id: e.target.id, value: e.target.value })
-                }
-                type='text'
-                placeholder='Name...'
-                required
-                minLength='3'
-                maxLength='30'
-              />
-            </FieldGroup>
-
-            <FieldGroup>
-              <label htmlFor='taskDay'>Task Day</label>
-              <select
-                id='taskDay'
-                data-testid='taskDay'
-                value={fields.taskDay}
-                onChange={(e) =>
-                  setFields({ id: e.target.id, value: e.target.value })
-                }
-              >
-                {week.map((day) => (
-                  <option key={day.name} data-testid={day.name}>
-                    {day.name}
-                  </option>
-                ))}
-              </select>
-            </FieldGroup>
-
-            <FieldGroup>
-              <button type='submit'>New Task</button>
-            </FieldGroup>
-          </Form>
-        </div>
-      </Header>
-
+      <Header {...{ fields, setFields, handleSubmit }} />
       <Main>
         {week.map((day) => (
           <DayCard
