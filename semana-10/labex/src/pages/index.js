@@ -5,3 +5,4 @@ export { default as TripDetailsPage } from "./TripDetailsPage";
 export { default as LoginPage } from "./LoginPage";
 export { default as AdminPage } from "./AdminPage";
 export { default as NotFoundPage } from "./NotFoundPage";
+export { default as LoadingPage } from "./LoadingPage";
