@@ -32,7 +32,10 @@ const posts: post[] = [
 // =========================
 // (b)
 // =========================
-function buscarPostsPorAutor(posts: post[], autorInformado: string): post[] {
+function buscarPostsPorAutor(
+  posts: post[],
+  autorInformado: string
+): post[] | [] {
   return posts.filter((post) => {
     return post.autor === autorInformado;
   });
