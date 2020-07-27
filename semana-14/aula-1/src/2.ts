@@ -1,13 +1,13 @@
 // =========================
 // (a) (b)
 // =========================
-type saida = {
+type dados = {
   maior: number;
   menor: number;
   media: number;
 };
 
-function obterEstatisticas(numeros: number[]): saida {
+function obterEstatisticas(numeros: number[]): dados {
   const numerosOrdenados = numeros.sort((a, b) => a - b);
 
   let soma = 0;
@@ -28,18 +28,12 @@ function obterEstatisticas(numeros: number[]): saida {
 // =========================
 // (c) Não consegui resolver
 // =========================
-// type amostra = {
-//   numeros: number[],
-//   obterEstatisticas: (number[]) => {
-//     maior: number,
-//     menor: number,
-//     media: number,
-//   }
-// }
+type amostra = {
+  numeros: number[];
+  obterEstatisticas: (numeros: number[]) => dados;
+};
 
-// const amostraDeIdades = {
-
-// 		numeros: [21, 18, 65, 44, 15, 18],
-
-// 		obterEstatisticas: (numeros) => {...}
-// }
+const amostraDeIdades: amostra = {
+  numeros: [21, 18, 65, 44, 15, 18],
+  obterEstatisticas: (numeros) => obterEstatisticas(numeros),
+};
