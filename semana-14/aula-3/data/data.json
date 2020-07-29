@@ -1,0 +1,10 @@
+{
+  "events": [
+    {
+      "name": "Soccer",
+      "description": "Play soccer with friends",
+      "startDate": "2020-10-01T19:00:00.000Z",
+      "endDate": "2020-10-01T21:00:00.000Z"
+    }
+  ]
+}

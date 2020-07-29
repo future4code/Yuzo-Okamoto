@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "index": "ts-node src/index.ts",
+    "challenge": "ts-node src/challenge.ts"
+  },
+  "dependencies": {
+    "@types/node": "^14.0.27",
+    "moment": "^2.27.0",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
+  },
+  "name": "aula-3",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT"
+}
