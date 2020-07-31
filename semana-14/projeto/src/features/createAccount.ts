@@ -11,20 +11,23 @@ const validateFullName = (fullName: string) => {
   const fullNameArray = fullName.split(' ');
 
   if (fullNameArray.length < 2) {
-    throw new Error(`Nome completo inválido: ${fullName}`);
+    throw new Error(`Nome completo inválido: ${fullName}
+SOLUÇÃO: "Nome Sobrenome"`);
   }
 
   const firstName = fullNameArray[0];
   const lastName = fullNameArray.slice(1).join(' ');
 
   if (firstName.length < 3 || lastName.length < 3) {
-    throw new Error(`Sobrenome inválido: ${lastName}`);
+    throw new Error(`Sobrenome inválido: ${lastName}
+SOLUÇÃO: nome e sobrenome devem ter no mínimo duas letras`);
   }
 };
 
 const validateCPF = (cpf: string): void => {
   if (cpf.match(/[- .)(]/g)) {
-    throw new Error(`CPF inválido (somente números): ${cpf}`);
+    throw new Error(`CPF inválido: ${cpf}
+SOLUÇÃO: somente números (01234567890)`);
   }
 
   if (!cpfValidator(cpf)) {
@@ -45,19 +48,16 @@ const validateBirthDate = (birthDate: string): void => {
   const today = moment();
 
   if (!birthday.isValid()) {
-    throw new Error(`Data de nascimento inválida (DD/MM/YYYY): ${birthDate}`);
+    throw new Error(`Data de nascimento inválida: ${birthDate}
+SOLUÇÃO: DD/MM/AAAA`);
   }
 
   if (!today.subtract(18, 'years').isAfter(birthday)) {
-    throw new Error(
-      `Data de nascimento inválida (menor de idade): ${birthDate}`
-    );
+    throw new Error(`Idade mínima de 18 anos para clientes.`);
   }
 
   if (today.isAfter(birthday.add(150, 'years'))) {
-    throw new Error(
-      `Data de nascimento inválida (acima de 150 anos): ${birthDate}`
-    );
+    throw new Error(`Idade máxima de 150 anos para clientes.`);
   }
 };
 
