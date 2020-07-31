@@ -1,0 +1,13 @@
+{
+  "clients": [
+    {
+      "profile": {
+        "fullName": "yuzo santana okamoto",
+        "cpf": "03272295194",
+        "birthDate": "01/06/1989"
+      },
+      "balance": 0,
+      "extract": []
+    }
+  ]
+}
