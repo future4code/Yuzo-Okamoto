@@ -1,6 +1,8 @@
 import { createAccount } from './features/createAccount';
 import * as TYPES from './types/types';
 
+import * as readline from 'readline';
+
 const main = async () => {
   // Estruturação inicial do command
   const command: TYPES.command = {
@@ -21,7 +23,7 @@ const main = async () => {
 
       // Caso não sejam enviados os 3 parâmetros obrigatórios
       if (!fullName || !cpf || !birthDate) {
-        console.log(`ERRO: "create-account" recebe três parâmetros:
+        console.log(`ERRO: "create-account" recebe três parâmetros.
 SOLUÇÃO: create-account "Nome completo" "cpf somente números" "data de nascimento no formato DD/MM/AAAA"`);
         break;
       }
@@ -38,5 +40,7 @@ SOLUÇÃO: create-account "Nome completo" "cpf somente números" "data de nascim
 SOLUÇÃO: "create-account"`);
   }
 };
+
+// process.stdout.write('\x1Bc');
 
 main();
