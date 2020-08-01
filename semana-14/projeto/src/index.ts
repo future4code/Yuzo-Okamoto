@@ -1,4 +1,6 @@
 import { createAccount } from './features/createAccount';
+import { getBalance } from './features/getBalance';
+
 import * as TYPES from './types/types';
 
 import * as readline from 'readline';
@@ -17,12 +19,8 @@ const main = async () => {
 
   switch (command.feature) {
     case 'create-account':
-      const fullName = command.params[0];
-      const cpf = command.params[1];
-      const birthDate = command.params[2];
-
       // Caso não sejam enviados os 3 parâmetros obrigatórios
-      if (!fullName || !cpf || !birthDate) {
+      if (!command.params[0] || !command.params[1] || !command.params[2]) {
         console.log(`ERRO: "create-account" recebe três parâmetros.
 SOLUÇÃO: create-account "Nome completo" "cpf somente números" "data de nascimento no formato DD/MM/AAAA"`);
         break;
@@ -30,11 +28,27 @@ SOLUÇÃO: create-account "Nome completo" "cpf somente números" "data de nascim
 
       try {
         // Cadastra um novo cliente
-        createAccount({ fullName, cpf, birthDate });
+        createAccount({
+          fullName: command.params[0],
+          cpf: command.params[1],
+          birthDate: command.params[2],
+        });
       } catch (error) {
         console.log(`ERRO: ${error.message}`);
       }
       break;
+
+    case 'get-balance':
+      try {
+        getBalance({
+          fullName: command.params[0],
+          cpf: command.params[1],
+        });
+      } catch (error) {
+        console.log(`ERRO: ${error.message}`);
+      }
+      break;
+
     default:
       console.log(`ERRO: comando "${command.feature}" não encontrado.
 SOLUÇÃO: "create-account"`);

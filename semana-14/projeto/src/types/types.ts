@@ -4,7 +4,7 @@ export type command = {
   params: string[];
 };
 
-// Tipagem dos dados do cliente na criação de conta
+// Tipagem dos dados pessoais do cliente
 export type profile = {
   fullName: string;
   cpf: string;
@@ -28,4 +28,10 @@ export type client = {
 // Tipagem do banco de dados
 export type database = {
   clients?: client[];
+};
+
+// Tipagem dos parâmetros ao pegar saldo
+export type getBalanceParams = {
+  fullName: string;
+  cpf: string;
 };
