@@ -19,7 +19,7 @@ const main = async () => {
 
   switch (command.feature) {
     case 'create-account':
-      // Caso não sejam enviados os 3 parâmetros obrigatórios
+      // Validação dos parâmetros do comando
       if (!command.params[0] || !command.params[1] || !command.params[2]) {
         console.log(`ERRO: "create-account" recebe três parâmetros.
 SOLUÇÃO: create-account "Nome completo" "cpf somente números" "data de nascimento no formato DD/MM/AAAA"`);
@@ -39,7 +39,15 @@ SOLUÇÃO: create-account "Nome completo" "cpf somente números" "data de nascim
       break;
 
     case 'get-balance':
+      // Validação dos parâmetros do comando
+      if (!command.params[0] || !command.params[1]) {
+        console.log(`ERRO: "get-balance" recebe dois parâmetros.
+SOLUÇÃO: get-balance "Nome completo" "cpf somente números"`);
+        break;
+      }
+
       try {
+        // Pega saldo
         getBalance({
           fullName: command.params[0],
           cpf: command.params[1],
@@ -54,7 +62,5 @@ SOLUÇÃO: create-account "Nome completo" "cpf somente números" "data de nascim
 SOLUÇÃO: "create-account"`);
   }
 };
-
-// process.stdout.write('\x1Bc');
 
 main();
