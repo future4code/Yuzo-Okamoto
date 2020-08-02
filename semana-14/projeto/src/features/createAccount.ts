@@ -11,10 +11,12 @@ const createAccount = ({ fullName, cpf, birthDate }: TYPES.profile): void => {
   utils.validateCPF(cpf, true);
   utils.validateBirthDate(birthDate);
 
+  // Função assíncrona imediatamente chamada
   (async (): Promise<void> => {
     try {
       const data: TYPES.database = utils.getClients();
 
+      // Objeto Cliente que será adicionado à database
       const newClient: TYPES.client = {
         profile: {
           fullName,

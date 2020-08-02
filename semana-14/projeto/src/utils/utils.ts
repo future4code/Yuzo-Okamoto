@@ -8,6 +8,7 @@ import { validate as cpfValidator } from 'gerador-validador-cpf';
 const getClients = (): TYPES.database => {
   let data: TYPES.database;
 
+  // Função assíncrona imediatamente chamada
   (async () => {
     try {
       const rawData = fs.readFileSync('./data/bankDB.json').toString();
@@ -20,7 +21,7 @@ const getClients = (): TYPES.database => {
   return data;
 };
 
-const validateFullName = (fullName: string) => {
+const validateFullName = (fullName: string): void => {
   const fullNameArray = fullName.split(' ');
 
   if (fullNameArray.length < 2) {
