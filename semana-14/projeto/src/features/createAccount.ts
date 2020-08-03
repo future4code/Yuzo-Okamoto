@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as moment from 'moment';
 
 import * as TYPES from '../types/types';
-import * as utils from '../utils/utils';
+import * as utils from '../utils/';
 
 moment.locale('pt-br');
 

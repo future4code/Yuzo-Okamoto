@@ -1,4 +1,4 @@
-import * as utils from '../utils/utils';
+import * as utils from '../utils';
 import * as TYPES from '../types/types';
 
 const getBalance = ({ fullName, cpf }: TYPES.getBalanceParams): void => {

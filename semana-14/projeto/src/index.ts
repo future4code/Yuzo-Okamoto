@@ -3,8 +3,6 @@ import { getBalance } from './features/getBalance';
 
 import * as TYPES from './types/types';
 
-import * as readline from 'readline';
-
 const main = async () => {
   // Estruturação inicial do command
   const command: TYPES.command = {
@@ -19,10 +17,10 @@ const main = async () => {
 
   switch (command.feature) {
     case 'create-account':
-      // Validação dos parâmetros do comando
+      // Validação dos parâmetros do command
       if (!command.params[0] || !command.params[1] || !command.params[2]) {
         console.log(`ERRO: "create-account" recebe três parâmetros.
-SOLUÇÃO: create-account "Nome completo" "cpf somente números" "data de nascimento no formato DD/MM/AAAA"`);
+SOLUÇÃO: yarn run start create-account "Nome completo" "cpf somente números" "data de nascimento no formato DD/MM/AAAA"`);
         break;
       }
 
@@ -39,10 +37,10 @@ SOLUÇÃO: create-account "Nome completo" "cpf somente números" "data de nascim
       break;
 
     case 'get-balance':
-      // Validação dos parâmetros do comando
+      // Validação dos parâmetros do command
       if (!command.params[0] || !command.params[1]) {
         console.log(`ERRO: "get-balance" recebe dois parâmetros.
-SOLUÇÃO: get-balance "Nome completo" "cpf somente números"`);
+SOLUÇÃO: yarn run start get-balance "Nome completo" "cpf somente números"`);
         break;
       }
 
@@ -59,7 +57,9 @@ SOLUÇÃO: get-balance "Nome completo" "cpf somente números"`);
 
     default:
       console.log(`ERRO: comando "${command.feature}" não encontrado.
-SOLUÇÃO: "create-account"`);
+SOLUÇÃO:
+yarn run start create-account "Nome completo" "cpf somente números" "data de nascimento no formato DD/MM/AAAA"
+yarn run start get-balance "Nome completo" "cpf somente números"`);
   }
 };
 
