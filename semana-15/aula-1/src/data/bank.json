@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Yuzo",
+    "age": 31,
+    "cpf": "032",
+    "balance": 0,
+    "transactions": []
+  },
+  {
+    "name": "John",
+    "age": 18,
+    "cpf": "033",
+    "balance": 0,
+    "transactions": []
+  },
+  {
+    "name": "Marie",
+    "age": 19,
+    "cpf": "035",
+    "balance": 0,
+    "transactions": []
+  },
+  {
+    "name": "Johnette",
+    "age": 22,
+    "cpf": "012",
+    "balance": 0,
+    "transactions": []
+  }
+]
