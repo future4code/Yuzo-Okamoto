@@ -1,0 +1,9 @@
+export { IClient } from './IClient';
+export { Place } from './Place';
+export { ClientManager } from './ClientManager';
+export { Commerce } from './Commerce';
+export { CommercialClient } from './CommercialClient';
+export { IndustrialClient } from './IndustrialClient';
+export { Industry } from './Industry';
+export { Residence } from './Residence';
+export { ResidencialClient } from './ResidencialClient';
